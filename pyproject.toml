@@ -1,0 +1,22 @@
+[project]
+name = "ac-coach"
+version = "0.1.0"
+description = "Valós idejű vezetési tanácsadó Assetto Corsához: ideálív, fékezési pont, fékerő."
+requires-python = ">=3.12"
+dependencies = ["numpy>=2.0", "aiohttp>=3.9"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+ac_coach = ["web/static/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

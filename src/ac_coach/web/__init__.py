@@ -1,0 +1,1 @@
+"""Második képernyős webes felület."""

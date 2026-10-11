@@ -1,0 +1,130 @@
+:root {
+  --bg: #0d0f12;
+  --card: #171a1f;
+  --line: #2a2f37;
+  --text: #e8eaed;
+  --muted: #8a919c;
+  --good: #3ecf6e;
+  --bad: #ff5a5a;
+  --warn: #ffb020;
+  --thr: #3ecf6e;
+  --brk: #ff4d4d;
+  --ref: #9aa3ad;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--line);
+  font-size: 15px;
+}
+
+.dot { width: 10px; height: 10px; border-radius: 50%; background: var(--bad); flex: none; }
+.dot.waiting { background: var(--warn); }
+.dot.ok { background: var(--good); }
+
+main {
+  display: grid;
+  gap: 10px;
+  padding: 10px;
+  height: calc(100% - 41px);
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto minmax(220px, 1fr) minmax(140px, 0.6fr);
+  grid-template-areas:
+    "delta next inputs"
+    "trace trace map"
+    "results results map";
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 14px;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.delta-card { grid-area: delta; }
+.next-card { grid-area: next; }
+.inputs-card { grid-area: inputs; }
+.trace-card { grid-area: trace; display: flex; flex-direction: column; }
+.map-card { grid-area: map; padding: 6px; }
+.results-card { grid-area: results; overflow: auto; }
+
+.label { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
+.muted { color: var(--muted); }
+.hidden { visibility: hidden; }
+
+.delta { font-size: 64px; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1.1; }
+.delta.good { color: var(--good); }
+.delta.bad { color: var(--bad); }
+
+.times { display: grid; grid-template-columns: repeat(4, auto); gap: 4px 16px; margin-top: 6px; }
+.times b { display: block; font-size: 18px; font-variant-numeric: tabular-nums; }
+
+.badge {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: var(--bad);
+  color: #000;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.big { font-size: 48px; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1.1; }
+.next-title { font-size: 20px; font-weight: 600; margin-top: 4px; }
+#next-dist.near { color: var(--warn); }
+#next-dist.now { color: var(--bad); }
+
+.bar { height: 10px; background: var(--line); border-radius: 5px; margin: 8px 0; overflow: hidden; }
+#next-bar { height: 100%; width: 0; background: var(--warn); }
+.targets { font-size: 15px; line-height: 1.5; }
+.targets b { font-variant-numeric: tabular-nums; }
+
+.speed-row { display: flex; justify-content: space-between; align-items: baseline; }
+.gear { font-size: 48px; font-weight: 700; color: var(--warn); }
+
+.pedal { display: grid; grid-template-columns: 40px 1fr; align-items: center; gap: 8px; margin-top: 8px; }
+.pbar { position: relative; height: 22px; background: var(--line); border-radius: 4px; overflow: hidden; }
+.fill { height: 100%; width: 0; }
+.fill.thr { background: var(--thr); }
+.fill.brk { background: var(--brk); }
+.ref-mark { position: absolute; top: 0; bottom: 0; width: 3px; background: #fff; left: 0; display: none; }
+.legend { font-size: 11px; margin-top: 6px; }
+
+canvas { display: block; width: 100%; height: 100%; flex: 1; min-height: 0; }
+
+.results-cols { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; }
+.list { list-style: none; margin: 4px 0 0; padding: 0; font-size: 14px; }
+.list li { padding: 3px 0; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+.good { color: var(--good); }
+.bad { color: var(--bad); }
+
+@media (max-width: 900px) {
+  main {
+    height: auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    grid-template-areas: "delta" "next" "inputs" "trace" "map" "results";
+  }
+  .trace-card { height: 280px; }
+  .map-card { height: 320px; }
+  .delta { font-size: 52px; }
+  .results-cols { grid-template-columns: 1fr; }
+}

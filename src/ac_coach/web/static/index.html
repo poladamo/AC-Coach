@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AC Coach</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header>
+    <span id="conn" class="dot" title="kapcsolat"></span>
+    <span id="session">Kapcsolódás...</span>
+    <span id="ref-info" class="muted"></span>
+  </header>
+
+  <main>
+    <section class="card delta-card">
+      <div class="label">Delta (elméleti legjobbhoz)</div>
+      <div id="delta" class="delta">–</div>
+      <div class="times">
+        <div><span class="label">Kör</span><b id="lap">–</b></div>
+        <div><span class="label">Idő</span><b id="lap-time">–</b></div>
+        <div><span class="label">Utolsó</span><b id="last-time">–</b></div>
+        <div><span class="label">Legjobb</span><b id="best-time">–</b></div>
+      </div>
+      <div id="invalid" class="badge hidden">ÉRVÉNYTELEN KÖR</div>
+    </section>
+
+    <section class="card next-card">
+      <div class="label">Következő féktáv</div>
+      <div id="next-title" class="next-title">–</div>
+      <div id="next-dist" class="big">–</div>
+      <div class="bar"><div id="next-bar"></div></div>
+      <div id="next-targets" class="targets"></div>
+    </section>
+
+    <section class="card inputs-card">
+      <div class="speed-row">
+        <div><span id="speed" class="big">–</span> <span class="muted">km/h</span></div>
+        <div id="gear" class="gear">–</div>
+      </div>
+      <div id="ref-speed" class="muted">&nbsp;</div>
+      <div class="pedal">
+        <span class="label">Gáz</span>
+        <div class="pbar"><div id="thr" class="fill thr"></div><div id="thr-ref" class="ref-mark"></div></div>
+      </div>
+      <div class="pedal">
+        <span class="label">Fék</span>
+        <div class="pbar"><div id="brk" class="fill brk"></div><div id="brk-ref" class="ref-mark"></div></div>
+      </div>
+      <div class="legend muted">fehér jel = referencia</div>
+    </section>
+
+    <section class="card trace-card">
+      <div class="label">Sebesség és pedálok – szürke: referencia, színes: te</div>
+      <canvas id="trace"></canvas>
+    </section>
+
+    <section class="card map-card">
+      <canvas id="map"></canvas>
+    </section>
+
+    <section class="card results-card">
+      <div class="results-cols">
+        <div>
+          <div class="label">Féktávok</div>
+          <ol id="results" class="list"></ol>
+        </div>
+        <div>
+          <div class="label">Körök</div>
+          <ol id="laps" class="list"></ol>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+# Assetto Corsa telepítési mappa
+ac_path = 'E:\SteamLibrary\steamapps\common\assettocorsa'
+
+# Rögzített körök helye (a projekt mappájához képest)
+data_dir = "data"
+
+# Körök újramintavételezése a pálya mentén, méterben
+resample_step_m = 1.0
+
+# Kör érvénytelen, ha egyszerre ennél több kerék van a pályán kívül
+max_tyres_out = 2
+
+# Ennyivel korábban indul a fékező hangjelzés (hang + reakció késése, másodperc).
+# Ha a hosszú sípolás későn szól, növeld; ha korán, csökkentsd.
+audio_latency_s = 0.08
+
+# A webes felület portja (http://<gép IP>:<port>)
+web_port = 8765
